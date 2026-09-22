@@ -105,6 +105,21 @@ build-backend = "hatchling.build"
 
 [tool.hatch.build.targets.wheel]
 packages = ["nexus_vox"]
+exclude = [
+    "nexus_vox/voices/**/*.safetensors",
+    "nexus_vox/voices/**/*.wav",
+    "**/__pycache__/**",
+]
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "nexus_vox/voices/**/*.safetensors",
+    "nexus_vox/voices/**/*.wav",
+    "**/__pycache__/**",
+    "tests/**",
+    "training/**",
+    "scripts/**",
+]
 
 [project.scripts]
 nexus-vox = "nexus_vox.main:cli_app"
