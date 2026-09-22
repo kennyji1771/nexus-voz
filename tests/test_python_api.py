@@ -1,8 +1,8 @@
 """Tests for the public Python API surface."""
 
-import pocket_tts
-from pocket_tts import TTSModel
-from pocket_tts.models.tts_model import TTSModel as TTSModelImpl
+import nexus_vox
+from nexus_vox import TTSModel
+from nexus_vox.models.tts_model import TTSModel as TTSModelImpl
 
 
 def test_public_api_exports_only_tts_model():

@@ -6,8 +6,8 @@ from typing import ParamSpec, TypeVar
 
 import pytest
 
-import pocket_tts.main
-from pocket_tts import TTSModel
+import nexus_vox.main
+from nexus_vox import TTSModel
 
 # A single sentence, short enough to stay in one chunk but long enough that its
 # generation is still running when we cancel it.

@@ -1,5 +1,5 @@
 """
-Evaluation harness for pocket-tts int8 quantization strategy.
+Evaluation harness for nexus-vox int8 quantization strategy.
 
 For each quantization config:
   - Generates audio for eval sentences per voice
@@ -30,8 +30,8 @@ import numpy.typing as npt
 import scipy.io.wavfile
 import torch
 
-from pocket_tts import TTSModel
-from pocket_tts.quantization import apply_dynamic_int8
+from nexus_vox import TTSModel
+from nexus_vox.quantization import apply_dynamic_int8
 
 # Quantization configs for benchmarking. Each maps to a set of layer group keys.
 CONFIGS = {
@@ -463,7 +463,7 @@ def write_quality_csv(summaries: list[ConfigSummary], output_dir: Path):
 def write_markdown_report(summaries: list[ConfigSummary], output_dir: Path):
     report_path = output_dir / "report.md"
     lines = [
-        "# pocket-tts int8 Quantization Evaluation Report",
+        "# nexus-vox int8 Quantization Evaluation Report",
         f"\nGenerated: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}",
         f"\nEval text length: {len(EVAL_TEXT.split())} words",
         f"\nVoices tested: {', '.join(VOICES)}",
@@ -530,7 +530,7 @@ def write_json_summary(summaries: list[ConfigSummary], output_dir: Path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Evaluate pocket-tts quantization configs")
+    parser = argparse.ArgumentParser(description="Evaluate nexus-vox quantization configs")
     parser.add_argument("--config", nargs="+", choices=list(CONFIGS.keys()))
     parser.add_argument("--all-configs", action="store_true")
     parser.add_argument("--voices", nargs="+", default=VOICES, choices=VOICES)

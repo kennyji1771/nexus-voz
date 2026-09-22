@@ -3,7 +3,7 @@ from pathlib import Path
 
 import torch
 
-from pocket_tts.data.audio import audio_read, stream_audio_chunks
+from nexus_vox.data.audio import audio_read, stream_audio_chunks
 
 
 def test_stream_audio_chunks_patches_seekable_wav_header(tmp_path: Path):

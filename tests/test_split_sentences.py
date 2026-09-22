@@ -2,8 +2,8 @@
 
 import pytest
 
-from pocket_tts.models.tts_model import prepare_text_prompt, split_into_best_sentences
-from pocket_tts.modules.text_conditioner import SentencePieceTokenizer, get_default_tokenizer
+from nexus_vox.models.tts_model import prepare_text_prompt, split_into_best_sentences
+from nexus_vox.modules.text_conditioner import SentencePieceTokenizer, get_default_tokenizer
 
 
 @pytest.fixture(scope="session")

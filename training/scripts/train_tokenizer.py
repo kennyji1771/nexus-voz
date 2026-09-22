@@ -1,6 +1,6 @@
 """Train a sentencepiece tokenizer for a new language or domain.
 
-The flow LM looks text up in a fixed-size table, and pocket-tts asserts that
+The flow LM looks text up in a fixed-size table, and nexus-vox asserts that
 lookup_table.n_bins in the model config equals the tokenizer's vocab size
 exactly. The default here is the 4000 the released configs already use, so a
 new tokenizer drops in without touching n_bins; the padding id is the table's

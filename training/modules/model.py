@@ -1,10 +1,10 @@
-"""Trainable wrapper around the pocket-tts FlowLM.
+"""Trainable wrapper around the nexus-vox FlowLM.
 
-Reuses the pocket-tts modules (StreamingTransformer with model_state=None as a
+Reuses the nexus-vox modules (StreamingTransformer with model_state=None as a
 plain causal transformer, LUTConditioner, SimpleMLPAdaLN-style head, Mimi) so
-that checkpoints trained here are directly loadable by pocket-tts inference.
+that checkpoints trained here are directly loadable by nexus-vox inference.
 
-Sequence layout (matches pocket-tts generation exactly):
+Sequence layout (matches nexus-vox generation exactly):
     [bos_before_voice, voice latents @ speaker_proj, text embeddings, audio...]
 with the audio stream teacher-forced through input_linear (BOS latent first).
 CFG dropout removes the text and/or voice segments entirely.
@@ -16,8 +16,8 @@ import torch
 import torch.nn.functional as F
 from torch import nn
 
-from pocket_tts.models.flow_lm import FlowLMModel
-from pocket_tts.modules.stateful_module import ModelState, increment_steps, init_states
+from nexus_vox.models.flow_lm import FlowLMModel
+from nexus_vox.modules.stateful_module import ModelState, increment_steps, init_states
 
 from ..args import TrainArgs
 from .conditioner import build_sequences_with_conditions

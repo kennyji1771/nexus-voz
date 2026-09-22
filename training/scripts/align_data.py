@@ -37,7 +37,7 @@ import typer
 from pydantic import BaseModel
 from tqdm import tqdm
 
-from pocket_tts.data.audio_utils import convert_audio
+from nexus_vox.data.audio_utils import convert_audio
 
 if TYPE_CHECKING:
     from transformers import Wav2Vec2ForCTC

@@ -17,11 +17,11 @@ from torch import nn
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
 import training.dataloader.audio as td_audio
-from pocket_tts.models.flow_lm import FlowLMModel
-from pocket_tts.modules.mlp import SimpleMLPAdaLN
-from pocket_tts.modules.stateful_module import init_states
-from pocket_tts.modules.text_conditioner import LUTConditioner
-from pocket_tts.modules.transformer import StreamingTransformer
+from nexus_vox.models.flow_lm import FlowLMModel
+from nexus_vox.modules.mlp import SimpleMLPAdaLN
+from nexus_vox.modules.stateful_module import init_states
+from nexus_vox.modules.text_conditioner import LUTConditioner
+from nexus_vox.modules.transformer import StreamingTransformer
 from training.args import TrainArgs
 from training.checkpointing import EMA
 from training.dataloader import DataLoader, Entry

@@ -1,7 +1,7 @@
 from pathlib import Path
 
-from pocket_tts import TTSModel, export_model_state
-from pocket_tts.utils.utils import _ORIGINS_OF_PREDEFINED_VOICES
+from nexus_vox import TTSModel, export_model_state
+from nexus_vox.utils.utils import _ORIGINS_OF_PREDEFINED_VOICES
 
 languages = [x.stem for x in Path("./pocket_tts/config").glob("*.yaml")]
 
@@ -15,7 +15,7 @@ for language in languages:
         )
         # Export a voice state for fast loading later
         model_state = model.get_state_for_audio_prompt(voice_origin)
-        dest = f"/projects/huggingface/pocket-tts/languages/{language}/embeddings/{voice_name}.safetensors"
+        dest = f"/projects/huggingface/nexus-vox/languages/{language}/embeddings/{voice_name}.safetensors"
         export_model_state(model_state, dest)
 
         model_state_copy = model.get_state_for_audio_prompt(dest)

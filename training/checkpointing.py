@@ -1,7 +1,7 @@
-"""Checkpointing: resumable training state + pocket-tts-format export.
+"""Checkpointing: resumable training state + nexus-vox-format export.
 
 `export_pocket_safetensors` writes a single model.safetensors with flow_lm.*
-and mimi.* keys — the exact format pocket-tts loads via `weights_path` in a
+and mimi.* keys — the exact format nexus-vox loads via `weights_path` in a
 model config (point a copy of the config's weights_path at the exported file).
 """
 
@@ -70,7 +70,7 @@ def save_checkpoint(
     mimi: nn.Module | None = None,
 ):
     """Write the resumable training state; with `mimi`, also refresh the
-    pocket-tts-format export (run_dir/model.safetensors)."""
+    nexus-vox-format export (run_dir/model.safetensors)."""
     run_dir.mkdir(parents=True, exist_ok=True)
     payload = {
         "step": step,
@@ -143,4 +143,4 @@ def export_pocket_safetensors(
     tmp = path.with_suffix(".tmp")
     safetensors.torch.save_file(state, str(tmp))
     tmp.rename(path)
-    logger.info(f"exported pocket-tts weights to {path}")
+    logger.info(f"exported nexus-vox weights to {path}")

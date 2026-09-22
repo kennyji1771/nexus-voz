@@ -12,10 +12,10 @@ from typing import Any
 import soundfile
 import torch
 
-from pocket_tts.models.flow_lm import FlowLMModel
-from pocket_tts.models.mimi import MimiModel
-from pocket_tts.modules.attention import StreamingMultiheadAttention
-from pocket_tts.modules.stateful_module import init_states
+from nexus_vox.models.flow_lm import FlowLMModel
+from nexus_vox.models.mimi import MimiModel
+from nexus_vox.modules.attention import StreamingMultiheadAttention
+from nexus_vox.modules.stateful_module import init_states
 from training.args import TrainArgs
 from training.modules.builders import load_model_config
 from training.modules.model import TrainableTTS

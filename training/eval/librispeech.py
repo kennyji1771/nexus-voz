@@ -34,8 +34,8 @@ import sphn
 import torch
 from pydantic import BaseModel
 
-from pocket_tts.models.mimi import MimiModel
-from pocket_tts.modules.stateful_module import init_states
+from nexus_vox.models.mimi import MimiModel
+from nexus_vox.modules.stateful_module import init_states
 from training.args import load_args
 from training.checkpointing import EMA, latest_checkpoint, load_checkpoint
 from training.modules.builders import build_models

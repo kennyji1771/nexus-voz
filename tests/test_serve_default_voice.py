@@ -11,7 +11,7 @@ import torch
 from fastapi.testclient import TestClient
 from typer.testing import CliRunner
 
-from pocket_tts import main
+from nexus_vox import main
 
 runner = CliRunner()
 

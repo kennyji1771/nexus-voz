@@ -12,7 +12,7 @@ backbone output for one frame, `x_0` is noise and `x_1` the target latent.
   1 time cond, multi-step decode.
 - LSD: Lagrangian Self Distillation (arXiv:2505.18825), 2 time conds (s, t),
   1-step (or few-step) decode. This is the objective of the released
-  pocket-tts models.
+  nexus-vox models.
 """
 
 from typing import Literal
@@ -20,7 +20,7 @@ from typing import Literal
 import torch
 from torch import nn
 
-from pocket_tts.models.flow_lm import FlowNet, lsd_decode, ot_decode
+from nexus_vox.models.flow_lm import FlowNet, lsd_decode, ot_decode
 
 from .utils import MLP, f_grad_x_only, zero_init
 

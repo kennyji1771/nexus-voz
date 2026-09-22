@@ -1,5 +1,5 @@
 """Builders: assemble the trainable model, the frozen Mimi codec, and (for
-distillation runs) the frozen teacher from a pocket-tts config + TrainArgs."""
+distillation runs) the frozen teacher from a nexus-vox config + TrainArgs."""
 
 import copy
 import logging
@@ -12,12 +12,12 @@ import torch
 import yaml
 from torch import nn
 
-from pocket_tts.models.flow_lm import FlowLMModel
-from pocket_tts.models.mimi import MimiModel, build_mimi
-from pocket_tts.models.tts_model import TTSModel
-from pocket_tts.modules.mlp import SimpleMLPAdaLN
-from pocket_tts.utils.config import Config, load_config
-from pocket_tts.utils.utils import download_if_necessary
+from nexus_vox.models.flow_lm import FlowLMModel
+from nexus_vox.models.mimi import MimiModel, build_mimi
+from nexus_vox.models.tts_model import TTSModel
+from nexus_vox.modules.mlp import SimpleMLPAdaLN
+from nexus_vox.utils.config import Config, load_config
+from nexus_vox.utils.utils import download_if_necessary
 
 from ..args import TrainArgs
 from ..scripts.shrink_checkpoint import shrink
@@ -29,7 +29,7 @@ logger = logging.getLogger(__name__)
 
 
 def load_model_config(path: str, overrides: dict[str, tp.Any]) -> Config:
-    """A pocket-tts model config with dotted-path fields replaced.
+    """A nexus-vox model config with dotted-path fields replaced.
 
     Lets one released config serve as the architecture for any variant of it
     (the 24-layer teacher is the 6-layer config with num_layers changed), so a
@@ -146,7 +146,7 @@ def _load_flow_lm_state(path: str, use_ema: bool) -> dict[str, torch.Tensor]:
 
 
 def build_models(args: TrainArgs) -> tuple[TrainableTTS, MimiModel, Config]:
-    """Build (trainable model, frozen mimi, pocket config) from a pocket-tts config."""
+    """Build (trainable model, frozen mimi, pocket config) from a nexus-vox config."""
     config = load_model_config(args.model_config, args.model_overrides)
     tts_model = TTSModel._from_pydantic_config(
         config, temp=0.7, sampler_decode_steps=1, noise_clamp=None, eos_threshold=0.0, origin=None
@@ -160,7 +160,7 @@ def build_models(args: TrainArgs) -> tuple[TrainableTTS, MimiModel, Config]:
 
     flow = build_flow(args.flow.type, **args.flow.kwargs)
     if flow.num_time_conds != 2:
-        # LSD keeps the stock pocket-tts head; other objectives need a different
+        # LSD keeps the stock nexus-vox head; other objectives need a different
         # number of time embeddings.
         flow_lm.flow_net = SimpleMLPAdaLN(
             latent_dim,

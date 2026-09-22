@@ -13,7 +13,7 @@ import numpy.typing as npt
 import sphn
 import torch
 
-from pocket_tts.data.audio_utils import convert_audio
+from nexus_vox.data.audio_utils import convert_audio
 
 logger = logging.getLogger(__name__)
 

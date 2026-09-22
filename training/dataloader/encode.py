@@ -10,7 +10,7 @@ import logging
 
 import torch
 
-from pocket_tts.models.mimi import MimiModel
+from nexus_vox.models.mimi import MimiModel
 
 from .types import Batch
 
