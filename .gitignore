@@ -32,3 +32,14 @@ htmlcov/
 smoke_*.wav
 tts_output.wav
 *.pyc
+
+# Tokens y secretos (NUNCA commitear)
+token.txt
+*token*.txt
+.env
+.env.*
+secrets.json
+
+# Test outputs
+test_*.wav
+test_*.mp3
