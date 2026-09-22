@@ -1,6 +1,6 @@
 from nexus_vox.utils.utils import _ORIGINS_OF_PREDEFINED_VOICES
 
-DEFAULT_LANGUAGE = "english"
+DEFAULT_LANGUAGE = "spanish"
 DEFAULT_TEMPERATURE = 0.7
 DEFAULT_SAMPLER_DECODE_STEPS = 1
 DEFAULT_NOISE_CLAMP = None
@@ -36,8 +36,8 @@ DEFAULT_TEXT_FOR_LANGUAGE = {
         "Spero che ti piacerò."
     ),
     "spanish": (
-        "Hola mundo. Soy Nexus.Vox. "
-        "Soy lo suficientemente rápido para funcionar en pequeñas CPU. "
+        "Hola mundo. Soy Nexus.Vox, tu asistente de voz en español latino. "
+        "Funciono en CPUs pequeñas, sin GPU. "
         "Espero que te guste."
     ),
 }
