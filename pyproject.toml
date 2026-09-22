@@ -1,9 +1,41 @@
 [project]
 name = "nexus-vox"
-requires-python = ">= 3.10,<3.15"
-description = "Nexus.Vox - TTS CPU-first nativo en espanol latino con clonacion de voz."
 version = "3.1.0"
+description = "Nexus.Vox - TTS CPU-first nativo en español latino con clonación de voz."
 readme = "README.md"
+requires-python = ">= 3.10,<3.15"
+license = { text = "MIT" }
+authors = [
+    { name = "Kenny Ji", email = "sieveresk@gmail.com" },
+]
+keywords = [
+    "text-to-speech",
+    "tts",
+    "spanish",
+    "español",
+    "latinoamerica",
+    "voice-cloning",
+    "cpu",
+    "no-gpu",
+    "lightweight",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: Spanish",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Programming Language :: Python :: 3.14",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+
 dependencies = [
     "numpy>=2",
     # I tried 2.4.0 but the generated audio is wrong, so 2.5+ is needed.
@@ -26,10 +58,13 @@ dependencies = [
 audio = ["soundfile>=0.12.0"]
 quantize = ["torchao>=0.16.0"]
 
+[project.urls]
+Homepage = "https://github.com/kennyji1771/nexus-voz"
+Repository = "https://github.com/kennyji1771/nexus-voz"
+Issues = "https://github.com/kennyji1771/nexus-voz/issues"
+Changelog = "https://github.com/kennyji1771/nexus-voz/commits/main"
 
 [dependency-groups]
-# Also covers training the models in training/ (see training/README.md) and
-# scoring with training/eval/librispeech.py. Inference needs none of this.
 dev = [
     "coverage>=7.6.12",
     "jiwer>=3.0",
@@ -44,14 +79,12 @@ dev = [
     "soundfile",
     "sphn>=0.1.4",
     "torchaudio",
-    # scripts/align_data.py: wav2vec2 CTC forced alignment of the manifests
     "transformers>=4.40",
     "tqdm>=4.60",
     "utmos-pytorch>=0.1.0",
     "whisper-normalizer>=0.0.10",
     "ty>=0.0.77",
 ]
-
 
 [tool.ruff]
 line-length = 100
@@ -64,8 +97,6 @@ suppress-none-returning = true
 
 [tool.ruff.format]
 line-ending = "lf"
-# avoid having a trailing comma changing 
-# the behavior of the formatter
 skip-magic-trailing-comma = true
 
 [build-system]
@@ -80,23 +111,19 @@ nexus-vox = "nexus_vox.main:cli_app"
 
 [tool.uv]
 exclude-newer = "7 days"
-# System python distribution can have header files missing, so we use only the python
-# distributions provided by uv which have everything included.
 python-preference = "only-managed"
 
 [tool.ruff.lint.flake8-tidy-imports]
 ban-relative-imports = "all"
 
 [tool.ty.src]
-# The example notebook imports IPython, which is not a dependency.
 exclude = ["docs/"]
 
 [tool.ty.rules]
 missing-type-argument = "error"
 
 [[tool.ty.overrides]]
-# The torch.ao fallback is deliberately on a deprecated API (see the module docstring).
-include = ["pocket_tts/quantization.py"]
+include = ["nexus_vox/quantization.py"]
 
 [tool.ty.overrides.rules]
 deprecated = "ignore"

@@ -60,7 +60,9 @@ DEFAULT_VOICE_FOR_CUSTOM_MODEL = _ORIGINS_OF_PREDEFINED_VOICES[DEFAULT_VOICE_FAL
 # Ruta a la voz clonada local del usuario (opcional).
 # Si existe, se usará automáticamente como voz por defecto para español.
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent
-_LOCAL_VOICE_24L = _PROJECT_ROOT / "nexus_vox" / "voices" / "es-latam" / "mi_voz_24l.safetensors"
+_LOCAL_VOICE_24L = _PROJECT_ROOT / "nexus_vox" / "voices" / "es-latam" / "kenny_ji_24l.safetensors"
+# Nombre de display para logs y docs (el path físico usa guiones bajos).
+DEFAULT_VOICE_DISPLAY_NAME = "Kenny.Ji"
 
 
 def get_default_text_for_language(language: str | None) -> str:
