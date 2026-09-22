@@ -1,6 +1,8 @@
+from pathlib import Path
+
 from nexus_vox.utils.utils import _ORIGINS_OF_PREDEFINED_VOICES
 
-DEFAULT_LANGUAGE = "spanish"
+DEFAULT_LANGUAGE = "spanish_24l"
 DEFAULT_TEMPERATURE = 0.7
 DEFAULT_SAMPLER_DECODE_STEPS = 1
 DEFAULT_NOISE_CLAMP = None
@@ -55,10 +57,17 @@ DEFAULT_VOICE_FALLBACK = "alba"
 # to the audio file behind the fallback voice: any model can clone it.
 DEFAULT_VOICE_FOR_CUSTOM_MODEL = _ORIGINS_OF_PREDEFINED_VOICES[DEFAULT_VOICE_FALLBACK]
 
+# Ruta a la voz clonada local del usuario (opcional).
+# Si existe, se usará automáticamente como voz por defecto para español.
+_PROJECT_ROOT = Path(__file__).resolve().parent.parent
+_LOCAL_VOICE_24L = _PROJECT_ROOT / "nexus_vox" / "voices" / "es-latam" / "mi_voz_24l.safetensors"
+
 
 def get_default_text_for_language(language: str | None) -> str:
+    if language is None:
+        language = DEFAULT_LANGUAGE
     for key, text in DEFAULT_TEXT_FOR_LANGUAGE.items():
-        if language is not None and key in language:
+        if key in language:
             return text
     return DEFAULT_TEXT_FOR_LANGUAGE[DEFAULT_LANGUAGE]
 
@@ -75,6 +84,10 @@ def get_default_voice_for_language(
         return DEFAULT_VOICE_FOR_CUSTOM_MODEL
     if language is None:
         language = DEFAULT_LANGUAGE
+    # Prioridad 1: voz clonada local del usuario para español
+    if "spanish" in language and _LOCAL_VOICE_24L.exists():
+        return str(_LOCAL_VOICE_24L)
+    # Prioridad 2: voz predefinida de Kyutai para el idioma (lola, etc.)
     for key, voice in DEFAULT_VOICE_FOR_LANGUAGE.items():
         if key in language:
             return voice
