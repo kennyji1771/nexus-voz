@@ -1,4 +1,4 @@
-﻿# Python
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -31,7 +31,10 @@ htmlcov/
 # Test outputs (generated)
 smoke_*.wav
 tts_output.wav
-*.pyc
+saludo.wav
+test_*.wav
+test_*.mp3
+*.tmp.wav
 
 # Tokens y secretos (NUNCA commitear)
 token.txt
@@ -39,7 +42,3 @@ token.txt
 .env
 .env.*
 secrets.json
-
-# Test outputs
-test_*.wav
-test_*.mp3
