@@ -7,7 +7,7 @@ DEFAULT_TEMPERATURE = 0.7
 DEFAULT_SAMPLER_DECODE_STEPS = 1
 DEFAULT_NOISE_CLAMP = None
 DEFAULT_EOS_THRESHOLD = -4.0
-DEFAULT_FRAMES_AFTER_EOS = 25  # colchón de frames para evitar EOS prematuro en español
+DEFAULT_FRAMES_AFTER_EOS = 15  # colchón de frames para evitar EOS prematuro en español
 # TODO: make this dynamic since english_2026-04 supports bigger chunks
 MAX_TOKEN_PER_CHUNK = 50
 
