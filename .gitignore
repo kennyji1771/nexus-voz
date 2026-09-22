@@ -27,3 +27,8 @@ htmlcov/
 # Modelos y voces generadas
 *.safetensors
 .cache/
+
+# Test outputs (generated)
+smoke_*.wav
+tts_output.wav
+*.pyc

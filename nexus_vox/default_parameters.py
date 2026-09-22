@@ -5,7 +5,7 @@ DEFAULT_TEMPERATURE = 0.7
 DEFAULT_SAMPLER_DECODE_STEPS = 1
 DEFAULT_NOISE_CLAMP = None
 DEFAULT_EOS_THRESHOLD = -4.0
-DEFAULT_FRAMES_AFTER_EOS = None
+DEFAULT_FRAMES_AFTER_EOS = 25  # colchón de frames para evitar EOS prematuro en español
 # TODO: make this dynamic since english_2026-04 supports bigger chunks
 MAX_TOKEN_PER_CHUNK = 50
 
@@ -36,8 +36,8 @@ DEFAULT_TEXT_FOR_LANGUAGE = {
         "Spero che ti piacerò."
     ),
     "spanish": (
-        "Hola mundo. Soy Nexus.Vox, tu asistente de voz en español latino. "
-        "Funciono en CPUs pequeñas, sin GPU. "
+        "Hola mundo. Soy Nexus Vox, tu asistente de voz en español latino. "
+        "Funciono en CPUs pequeñas, sin necesidad de GPU. "
         "Espero que te guste."
     ),
 }
@@ -73,7 +73,9 @@ def get_default_voice_for_language(
     """
     if config is not None or checkpoint is not None:
         return DEFAULT_VOICE_FOR_CUSTOM_MODEL
+    if language is None:
+        language = DEFAULT_LANGUAGE
     for key, voice in DEFAULT_VOICE_FOR_LANGUAGE.items():
-        if language is not None and key in language:
+        if key in language:
             return voice
     return DEFAULT_VOICE_FALLBACK
